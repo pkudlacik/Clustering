@@ -29,12 +29,12 @@ public class Cluster {
 	public Vector<Double> getMinValues() {
 		return minValues;
 	}
-	/**
-	 * Sets minimum values of a cluster
-	 */
-	public void setMinValues(Vector<Double> minValues) {
-		this.minValues = minValues;
-	}
+//	/**
+//	 * Sets minimum values of a cluster
+//	 */
+//	public void setMinValues(Vector<Double> minValues) {
+//		this.minValues = minValues;
+//	}
 	/**
 	 * Retrieves maximum values of a cluster
 	 * @return vector storing maximum values
@@ -42,12 +42,12 @@ public class Cluster {
 	public Vector<Double> getMaxValues() {
 		return maxValues;
 	}
-	/**
-	 * Sets maximum values of a cluster
-	 */
-	public void setMaxValues(Vector<Double> maxValues) {
-		this.maxValues = maxValues;
-	}
+//	/**
+//	 * Sets maximum values of a cluster
+//	 */
+//	public void setMaxValues(Vector<Double> maxValues) {
+//		this.maxValues = maxValues;
+//	}
 	/**
 	 * Retrieves average element of a cluster
 	 * @return vector storing average values
@@ -55,12 +55,12 @@ public class Cluster {
 	public Vector<Double> getAverage() {
 		return average;
 	}
-	/**
-	 * Sets average element of a cluster
-	 */
-	public void setAverage(Vector<Double> average) {
-		this.average = average;
-	}
+//	/**
+//	 * Sets average element of a cluster
+//	 */
+//	public void setAverage(Vector<Double> average) {
+//		this.average = average;
+//	}
 	/**
 	 * Retrieves clustered elements
 	 * @return List of vectors representing elements
@@ -68,13 +68,14 @@ public class Cluster {
 	public List<Vector<Double>> getData() {
 		return data;
 	}
-	/**
-	 * Sets cluster elements
-	 * @param data list of vectors representing elements
-	 */
-	public void setData(List<Vector<Double>> data) {
-		this.data = data;
-	}
+//	/**
+//	 * Sets cluster elements
+//	 * @param data list of vectors representing elements
+//	 */
+//	public void setData(List<Vector<Double>> data) {
+//		this.data = data;
+//		//TODO: calculate intermediate, average max and min - for new data
+//	}
 
 	/**
 	 * Adds new element to a cluster. Minimum, maximum and average values are updated.

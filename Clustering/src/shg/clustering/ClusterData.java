@@ -279,13 +279,19 @@ public class ClusterData {
 		for (Vector<Double> v : data) {
 			size = v.size();
 			for (int i = 0; i < size; i++) {
-				v.set(i, (v.get(i) - mins.get(i)) / maxs.get(i));
+				if (maxs.get(i) == 0.0) {
+					v.set(i, 0.0);
+				} else {
+					v.set(i, (v.get(i) - mins.get(i)) / maxs.get(i));
+				}
 			}
 		}
 
 		// update mins and maxs
 		for (int i = 0; i < size; i++) {
-			maxs.set(i, 1.0);
+			if (maxs.get(i) != 0.0) {
+				maxs.set(i, 1.0);
+			}
 			mins.set(i, 0.0);
 		}
 	}
