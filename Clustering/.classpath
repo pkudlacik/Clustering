@@ -7,5 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/FuzzLib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/NeuroLib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

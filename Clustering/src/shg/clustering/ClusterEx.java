@@ -5,12 +5,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
+import neuralnetwork.data.DataVector;
+
 /**
  * Cluster containing Vector<Double> elements
  * @author Przemys³aw Kud³acik
  *
  */
-public class Cluster {
+public class ClusterEx {
 	//minimum values of elements
 	private Vector<Double> minValues;
 	//maximum values of elements
@@ -20,7 +22,7 @@ public class Cluster {
 	//intermediate vector - needed for calculation of average
 	private Vector<Double> intermediate;
 	//list of cluster elements
-	private List<Vector<Double>> data = new LinkedList<Vector<Double>>();
+	private List<DataVector> data = new LinkedList<DataVector>();
 
 	/**
 	 * Retrieves minimum values of a cluster
@@ -65,7 +67,7 @@ public class Cluster {
 	 * Retrieves clustered elements
 	 * @return List of vectors representing elements
 	 */
-	public List<Vector<Double>> getData() {
+	public List<DataVector> getData() {
 		return data;
 	}
 //	/**
@@ -81,14 +83,14 @@ public class Cluster {
 	 * Adds new element to a cluster. Minimum, maximum and average values are updated.
 	 * @param vector element of a cluster
 	 */
-	public void addVector(Vector<Double> vector){
+	public void addVector(DataVector vector){
 		data.add(vector);
 		if(data.size()==1){
 			//first sample initiates every element
-			average = new Vector<Double>(vector);
-			intermediate = new Vector<Double>(vector);
-			minValues = new Vector<Double>(vector);
-			maxValues = new Vector<Double>(vector);
+			average = new Vector<Double>(vector.getData());
+			intermediate = new Vector<Double>(vector.getData());
+			minValues = new Vector<Double>(vector.getData());
+			maxValues = new Vector<Double>(vector.getData());
 		} else {
 			//expand size if needed
 			int size = vector.size();
@@ -122,8 +124,8 @@ public class Cluster {
 	 * After the operation both clusters contain the same references of inner fields.
 	 * @param cl cluster to be merged with this instance of an object
 	 */
-	public void merge(Cluster cl) {
-		Cluster one = null, two = null;
+	public void merge(ClusterEx cl) {
+		ClusterEx one = null, two = null;
 		if (data.size() >= cl.data.size()) {
 			one = this;
 			two = cl;
@@ -131,7 +133,7 @@ public class Cluster {
 			one = cl;
 			two = this;
 		}
-		for (Vector<Double> vector : two.getData()) {
+		for (DataVector vector : two.getData()) {
 			one.addVector(vector);
 		}
 		two.average = one.average;
@@ -148,7 +150,7 @@ public class Cluster {
 	public void pack() {
 		if(data.size()>1){
 			data.clear();
-			data.add( new Vector<Double>(average));
+			data.add( new DataVector(average));
 			//update intermediate (intermediate=average)
 			int size = intermediate.size();
 			for(int i=0; i<size; i++){
@@ -178,6 +180,7 @@ public class Cluster {
 			f.format("[%5.2f] ", d);				
 		}
 		sb.append("\n");
+		f.close();
 		
 		return sb.toString();
 	}
@@ -189,8 +192,8 @@ public class Cluster {
 		StringBuilder sb = new StringBuilder();
 		Formatter f = new Formatter(sb);
 		sb.append("Data:\n");
-		for(Vector<Double> v:data){
-			for(Double d:v){
+		for(DataVector v:data){
+			for(Double d:v.getData()){
 				f.format("[%5.2f] ", d);				
 			}
 			sb.append("\n");
@@ -208,6 +211,7 @@ public class Cluster {
 			f.format("[%5.2f] ", d);				
 		}
 		sb.append("\n");
+		f.close();
 		
 		return sb.toString();
 	}

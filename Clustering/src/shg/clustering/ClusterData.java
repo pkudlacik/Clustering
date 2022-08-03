@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
  * manually using standard methods of collections.
  * 
  * @author Przemys³aw Kud³acik
+ * @deprecated
  */
 public class ClusterData {
 
